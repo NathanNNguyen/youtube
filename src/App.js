@@ -22,8 +22,13 @@ function App() {
     setSelected(res.data.items[0])
   }
 
+  const onSelect = video => {
+    setSelected(video)
+  }
+
   return (
-    <Grid justify='center' container spacing={10}>
+    // <div style={{ background: 'black', height: '100vh' }}>
+    <Grid justify='center' container spacing={10} style={{ maxWidth: '90%', margin: '0 auto' }}>
       <Grid item xs={12}>
         <Grid container spacing={10}>
           <Grid item xs={12}>
@@ -33,11 +38,12 @@ function App() {
             <VideoDetails selected={selected} />
           </Grid>
           <Grid item xs={4}>
-            <VideoList />
+            <VideoList videos={videos} onSelect={onSelect} />
           </Grid>
         </Grid>
       </Grid>
     </Grid>
+    // </div>
   )
 }
 
