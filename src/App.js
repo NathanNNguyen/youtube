@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid } from '@material-ui/core';
 
 import youtube from './api';
@@ -8,6 +8,10 @@ function App() {
 
   const [videos, setVideos] = useState([]);
   const [selected, setSelected] = useState(null)
+
+  useEffect(() => {
+    handleSubmit('avengers')
+  }, [])
 
   const handleSubmit = async searchTerm => {
     const res = await youtube.get('search', {
