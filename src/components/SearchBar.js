@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Paper, TextField } from '@material-ui/core'
 
 function SearchBar({ handleSubmit }) {
-  const [search, setSearch] = React.useState('')
+  const [search, setSearch] = useState('')
 
   const submit = e => {
     e.preventDefault()
@@ -17,7 +17,6 @@ function SearchBar({ handleSubmit }) {
           fullWidth
           label='Search...'
           onChange={e => setSearch(e.target.value)}
-          value={search}
         />
       </form>
     </Paper>
