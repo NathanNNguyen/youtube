@@ -1,19 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Grid } from '@material-ui/core';
 
 import youtube from './api';
 import { SearchBar, VideoList, VideoDetails } from './components'
 
-function App() {
+class App extends React.Component {
+  state = {
+    videos: [],
+    selected: null
+  }
 
-  const [videos, setVideos] = useState([]);
-  const [selected, setSelected] = useState(null)
 
-  useEffect(() => {
-    handleSubmit('avengers')
-  }, [])
+  // const [videos, setVideos] = useState([]);
+  // const [selected, setSelected] = useState(null)
 
-  const handleSubmit = async searchTerm => {
+  // useEffect(() => {
+  //   handleSubmit('avengers')
+  // }, [])
+
+  handleSubmit = async searchTerm => {
     const res = await youtube.get('search', {
       params: {
         part: 'snippet',
@@ -22,33 +27,36 @@ function App() {
         q: searchTerm
       }
     });
-    setVideos(res.data.items)
-    setSelected(res.data.items[0])
+    this.setState({ ...this.state, videos: res.data.items, selected: res.data.items[0] })
+    // setSeleted(res.data.items[0])
   }
 
-  const onSelect = video => {
-    setSelected(video)
+  onSelect = video => {
+    this.setState({ selected: video })
   }
 
-  return (
-    // <div style={{ background: 'black', height: '100vh' }}>
-    <Grid justify='center' container spacing={10} style={{ maxWidth: '90%', margin: '0 auto' }}>
-      <Grid item xs={12}>
-        <Grid container spacing={10}>
-          <Grid item xs={12}>
-            <SearchBar handleSubmit={handleSubmit} />
-          </Grid>
-          <Grid item xs={8}>
-            <VideoDetails selected={selected} />
-          </Grid>
-          <Grid item xs={4}>
-            <VideoList videos={videos} onSelect={onSelect} />
+  render() {
+    const { handleSubmit, videos, selected, onSelect } = this.state
+    return (
+      // <div style={{ background: 'black', height: '100vh' }}>
+      <Grid justify='center' container spacing={10} style={{ maxWidth: '90%', margin: '0 auto' }}>
+        <Grid item xs={12}>
+          <Grid container spacing={10}>
+            <Grid item xs={12}>
+              <SearchBar handleSubmit={handleSubmit} />
+            </Grid>
+            <Grid item xs={8}>
+              <VideoDetails selected={selected} />
+            </Grid>
+            <Grid item xs={4}>
+              <VideoList videos={videos} onSelect={onSelect} />
+            </Grid>
           </Grid>
         </Grid>
-      </Grid>
-    </Grid>
-    // </div>
-  )
+      </Grid >
+      // </div>
+    )
+  }
 }
 
 export default App
