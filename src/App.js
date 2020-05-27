@@ -10,11 +10,11 @@ const App = () => {
   const [selected, setSelected] = useState(null)
 
   useEffect(() => {
-    handleSubmit('avengers')
+    handleSubmit('iron man vs thanos')
   }, [])
 
   const handleSubmit = async searchTerm => {
-    const { data: { item: videos } } = await youtube.get('search', {
+    const { data: { items: videos } } = await youtube.get('search', {
       params: {
         part: 'snippet',
         maxResults: 10,
