@@ -1,25 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid } from '@material-ui/core';
 
 import youtube from './api';
 import { SearchBar, VideoList, VideoDetails } from './components'
 
-class App extends React.Component {
-  state = {
-    videos: [],
-    selected: null
-  }
+const App = () => {
 
+  const [videos, setVideos] = useState([]);
+  const [selected, setSelected] = useState(null)
 
-  // const [videos, setVideos] = useState([]);
-  // const [selected, setSelected] = useState(null)
+  useEffect(() => {
+    handleSubmit('avengers')
+  }, [])
 
-  // useEffect(() => {
-  //   handleSubmit('avengers')
-  // }, [])
-
-  handleSubmit = async searchTerm => {
-    const res = await youtube.get('search', {
+  const handleSubmit = async searchTerm => {
+    const { data: { item: videos } } = await youtube.get('search', {
       params: {
         part: 'snippet',
         maxResults: 10,
@@ -27,18 +22,17 @@ class App extends React.Component {
         q: searchTerm
       }
     });
-    this.setState({ ...this.state, videos: res.data.items, selected: res.data.items[0] })
-    // setSeleted(res.data.items[0])
+    setVideos(videos)
+    setSelected(videos[0])
   }
 
-  onSelect = video => {
-    this.setState({ selected: video })
+  const onSelect = video => {
+    return setSelected(video)
   }
 
-  render() {
-    const { handleSubmit, videos, selected, onSelect } = this.state
-    return (
-      // <div style={{ background: 'black', height: '100vh' }}>
+  return (
+    <>
+      {/* // <div style={{ background: 'black', height: '100vh' }}> */}
       <Grid justify='center' container spacing={10} style={{ maxWidth: '90%', margin: '0 auto' }}>
         <Grid item xs={12}>
           <Grid container spacing={10}>
@@ -53,10 +47,10 @@ class App extends React.Component {
             </Grid>
           </Grid>
         </Grid>
-      </Grid >
-      // </div>
-    )
-  }
+      </Grid>
+      {/* </div> */}
+    </>
+  )
 }
 
 export default App
