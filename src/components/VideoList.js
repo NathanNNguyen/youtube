@@ -5,8 +5,6 @@ import VideoItem from './VideoItem'
 
 function VideoList({ videos, onSelect }) {
 
-  // if (!videos) return <div>Loading videos...</div>
-
   const list = videos.map((video, i) => <VideoItem onSelect={onSelect} key={i} video={video} />)
 
   return (
