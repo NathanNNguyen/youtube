@@ -1,54 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { Grid } from '@material-ui/core';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import youtube from './api';
-import { SearchBar, VideoList, VideoDetails } from './components'
+import PrivateRoute from './components/Utils/PrivateRoute.js';
+import Registration from './components/registrations/Registration.js'
+import Home from './components/Home.js';
 
 const App = () => {
 
-  const [videos, setVideos] = useState([]);
-  const [selected, setSelected] = useState(null)
-
-  useEffect(() => {
-    handleSubmit('iron man vs thanos')
-  }, [])
-
-  const handleSubmit = async searchTerm => {
-    const { data: { items: videos } } = await youtube.get('search', {
-      params: {
-        part: 'snippet',
-        maxResults: 10,
-        key: process.env.REACT_APP_KEY,
-        q: searchTerm
-      }
-    });
-    setVideos(videos)
-    setSelected(videos[0])
-  }
-
-  const onSelect = video => {
-    return setSelected(video)
-  }
-
   return (
     <>
-      {/* // <div style={{ background: 'black', height: '100vh' }}> */}
-      <Grid justify='center' container spacing={10} style={{ maxWidth: '90%', margin: '0 auto' }}>
-        <Grid item xs={12}>
-          <Grid container spacing={10}>
-            <Grid item xs={12}>
-              <SearchBar handleSubmit={handleSubmit} />
-            </Grid>
-            <Grid item xs={8}>
-              <VideoDetails selected={selected} />
-            </Grid>
-            <Grid item xs={4}>
-              <VideoList videos={videos} onSelect={onSelect} />
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
-      {/* </div> */}
+      <Router>
+        <Switch>
+          <Route exact path='/'>
+            <Registration />
+          </Route>
+
+          <PrivateRoute exact path='/home'>
+            <Home />
+          </PrivateRoute>
+
+        </Switch>
+      </Router>
     </>
   )
 }

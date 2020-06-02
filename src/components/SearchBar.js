@@ -8,6 +8,7 @@ function SearchBar({ handleSubmit }) {
   const submit = e => {
     e.preventDefault()
     handleSubmit(search)
+    setSearch('')
   }
 
   return (
