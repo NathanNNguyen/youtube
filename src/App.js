@@ -5,7 +5,7 @@ import PrivateRoute from './Utils/PrivateRoute.js';
 import Login from './registrations/Login.js';
 import Register from './registrations/Register.js';
 import Home from './components/Home.js';
-import './App.css'
+import './App.scss'
 
 const App = () => {
 
