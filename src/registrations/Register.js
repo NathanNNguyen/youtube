@@ -23,7 +23,7 @@ function Register() {
       .then(res => {
         console.log(res.data)
         localStorage.setItem('token', res.data.token);
-        localStorage.setItem('message', res.data.message);
+        // localStorage.setItem('message', res.data.message);
         history.push('/');
       })
       .catch(err => console.log(err));
