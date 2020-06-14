@@ -6,23 +6,27 @@ import Login from './registrations/Login.js';
 import Register from './registrations/Register.js';
 import Home from './components/Home.js';
 
+import styles from './App.module.scss';
+
 const App = () => {
 
   return (
     <>
       <Router>
         <Switch>
-          <Route exact path='/'>
-            <Login />
-          </Route>
+          <div className={styles.home}>
+            <Route exact path='/'>
+              <Login />
+            </Route>
 
-          <Route exact path='/register'>
-            <Register />
-          </Route>
+            <Route exact path='/register'>
+              <Register />
+            </Route>
 
-          <PrivateRoute exact path='/home'>
-            <Home />
-          </PrivateRoute>
+            <PrivateRoute exact path='/home'>
+              <Home />
+            </PrivateRoute>
+          </div>
         </Switch>
       </Router>
     </>
