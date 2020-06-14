@@ -1,0 +1,32 @@
+.navigation {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: .5%;
+
+  .icon {
+
+  }
+
+  .navTitle {
+  }
+
+  .menu{
+    position: relative;
+    display: block;
+
+    .menuIcon {
+      // position: absolute;
+      // display: block;
+      // opacity: 1;
+    }
+    
+    .menuItems {
+      display: flex;
+      flex-direction: column;
+      // opacity: 0;
+    }
+  }
+}

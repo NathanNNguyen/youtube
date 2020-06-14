@@ -7,7 +7,7 @@ function VideoDetails({ selected }) {
   const videoSrc = `https://www.youtube.com/embed/${selected.id.videoId}`
   return (
     <>
-      <Paper elevation={6} style={{ height: '30%' }}>
+      <Paper elevation={6} style={{ height: '90%' }}>
         <iframe frameBorder='0' height='100%' width='100%' title='Video Player' src={videoSrc} />
       </Paper>
       <Paper elevation={6} style={{ padding: '15px' }}>

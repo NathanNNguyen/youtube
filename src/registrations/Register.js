@@ -23,7 +23,6 @@ function Register() {
       .then(res => {
         console.log(res.data)
         localStorage.setItem('token', res.data.token);
-        localStorage.setItem('message', res.data.message);
         history.push('/');
       })
       .catch(err => console.log(err));
@@ -32,12 +31,16 @@ function Register() {
     <div className={styles.container}>
       <div className={styles.first}>
         <h2 className={styles.headline}>Hello, Friend!</h2>
-        <p className={styles.par}>Enter your personal details and start your journey with us</p>
-        <button className={styles.btn}
-          onClick={() => history.push('/')}
-        >Log In</button>
+        <p className={styles.par}>
+          New users? Don't worry, let's get started by entering your personal credentials
+        </p>
+        <button
+          className={styles.btn}
+          onClick={() => history.push('/')}>
+          Log In
+        </button>
       </div>
-      <div className={styles.second}>
+      <form onSubmit={register} className={styles.second}>
         <h2 className={styles.headline}>Register</h2>
         <input
           className={styles.i}
@@ -55,11 +58,10 @@ function Register() {
           value={user.password}
           onChange={handleChange}
         />
-        <button
-          className={styles.btn}
-          onClick={register}
-        >Register</button>
-      </div>
+        <button className={styles.btn}>
+          Register
+        </button>
+      </form>
     </div>
   )
 }
