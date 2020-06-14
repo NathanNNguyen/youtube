@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+import Navigation from './navigation/Navigation.js';
 import PrivateRoute from './Utils/PrivateRoute.js';
 import Login from './registrations/Login.js';
 import Register from './registrations/Register.js';
@@ -16,10 +17,12 @@ const App = () => {
         <Switch>
           <div className={styles.home}>
             <Route exact path='/'>
+              <Navigation />
               <Login />
             </Route>
 
             <Route exact path='/register'>
+              <Navigation />
               <Register />
             </Route>
 
