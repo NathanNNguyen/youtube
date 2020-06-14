@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import styles from './Login.module.scss';
 
 function Login() {
+  const history = useHistory();
+
   return (
     <div className={styles.container}>
       <div className={styles.first}>
@@ -14,7 +17,9 @@ function Login() {
       <div className={styles.second}>
         <h2 className={styles.headline}>Welcome Back!</h2>
         <p className={styles.par}>To keep connected with us please login with your personal info</p>
-        <button className={styles.btn}>Sign Up</button>
+        <button className={styles.btn}
+          onClick={() => history.push('/register')}
+        >Sign Up</button>
       </div>
     </div>
   )
