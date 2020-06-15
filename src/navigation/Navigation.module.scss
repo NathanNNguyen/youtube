@@ -5,28 +5,24 @@
   align-items: center;
   box-sizing: border-box;
   padding: .5%;
+  color: rgba(255, 255, 255, .7);
 
-  .icon {
+  .menuItems {
+    width: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 
-  }
-
-  .navTitle {
-  }
-
-  .menu{
-    position: relative;
-    display: block;
-
-    .menuIcon {
-      // position: absolute;
-      // display: block;
-      // opacity: 1;
+    i {
+      font-size: 20px;
+      cursor: pointer;
+      color: rgba(255, 255, 255, .7);
     }
-    
-    .menuItems {
-      display: flex;
-      flex-direction: column;
-      // opacity: 0;
+
+    p {
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 20px;
     }
   }
 }

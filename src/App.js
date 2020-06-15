@@ -6,6 +6,7 @@ import PrivateRoute from './Utils/PrivateRoute.js';
 import Login from './registrations/Login.js';
 import Register from './registrations/Register.js';
 import Home from './components/Home.js';
+import Contact from './contact/Contact.js';
 
 import styles from './App.module.scss';
 
@@ -24,6 +25,11 @@ const App = () => {
             <Route exact path='/register'>
               <Navigation />
               <Register />
+            </Route>
+
+            <Route exact path='/contact'>
+              <Navigation />
+              <Contact />
             </Route>
 
             <PrivateRoute exact path='/home'>

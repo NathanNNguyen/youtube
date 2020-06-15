@@ -56,7 +56,7 @@ function Login() {
         <button
           className={styles.btn}
           onClick={() => history.push('/register')}
-        >Sign Up</button>
+        >Register</button>
       </div>
     </div>
   )
