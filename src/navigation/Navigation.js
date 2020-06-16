@@ -1,21 +1,24 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useHistory } from 'react-router-dom'
 
 import styles from './Navigation.module.scss'
 
 function Navigation() {
-  const [menu, setMenu] = useState(false);
+  const history = useHistory();
+
+  const logOut = e => {
+    e.preventDefault();
+    localStorage.removeItem('token')
+    history.push('/')
+  }
 
   return (
     <div className={styles.navigation}>
-      <i className={styles.icon} class="fab fa-youtube" />
-      <h2 className={styles.navTitle}>Youtube Clone</h2>
-      <div className={styles.menu}>
-        <i class="fas fa-bars" className={styles.menuIcon} onClick={() => setMenu(!menu)} />
-        <div className={styles.menuItems}>
-          <a href='/'>Log in</a>
-          <a href='/register'>Register</a>
-          <a href='/'>Log out</a>
-        </div>
+      <h2><i className={styles.icon} class="fab fa-youtube" /> Youtube Clone</h2>
+      <div className={styles.menuItems}>
+        <p onClick={() => history.push('/register')}>Register</p>
+        <p onClick={() => history.push('/contact')}>Contact</p>
+        <i class="fas fa-sign-out-alt" onClick={logOut} />
       </div>
     </div>
   )
