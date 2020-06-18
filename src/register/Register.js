@@ -43,6 +43,7 @@ function Register() {
       <form onSubmit={register} className={styles.second}>
         <h2 className={styles.headline}>Register</h2>
         <input
+          required
           className={styles.i}
           type='text'
           name='username'
@@ -51,6 +52,7 @@ function Register() {
           onChange={handleChange}
         />
         <input
+          required
           className={styles.i}
           type='password'
           name='password'

@@ -31,6 +31,7 @@ function Login() {
       <form onSubmit={submit} className={styles.first}>
         <h2 className={styles.headline}>Sign In</h2>
         <input
+          required
           className={styles.i}
           name='username'
           type='text'
@@ -38,6 +39,7 @@ function Login() {
           onChange={handleChanges}
         />
         <input
+          required
           className={styles.i}
           name='password'
           type='password'
